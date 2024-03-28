@@ -1,0 +1,39 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{document} {
+      allow create: if request.auth != null;
+      allow read: if request.auth.uid == resource.data.user_ID;
+      allow write: if request.auth.uid == resource.data.user_ID;
+      allow delete: if request.auth.uid == resource.data.user_ID;
+    }
+
+    match /activity/{document} {
+      allow create: if request.auth.uid == request.resource.data.providerId;
+      allow read: if true;
+      allow write: if request.auth.uid == resource.data.providerId;
+      allow delete: if request.auth.uid == resource.data.providerId;
+    }
+
+    match /provider/{document} {
+      allow create: if request.auth.uid == request.resource.data.providerID;
+      allow read: if request.auth.uid == resource.data.providerID;
+      allow write: if request.auth.uid == resource.data.providerID;
+      allow delete: if request.auth.uid == resource.data.providerID;
+    }
+
+    match /reservation/{document} {
+      allow create: if request.auth.uid == request.resource.data.userID;
+      allow read: if request.auth != null;
+      allow write: if request.auth.uid == resource.data.userID;
+      allow delete: if request.auth.uid == resource.data.userID;
+    }
+
+    match /users/{parent}/bookmarks/{document} {
+      allow create: if request.auth.uid == get(/databases/$(database)/documents/users/$(parent)).data.user_ID;
+      allow read: if request.auth.uid == get(/databases/$(database)/documents/users/$(parent)).data.user_ID;
+      allow write: if request.auth.uid == get(/databases/$(database)/documents/users/$(parent)).data.user_ID;
+      allow delete: if request.auth.uid == get(/databases/$(database)/documents/users/$(parent)).data.user_ID;
+    }
+  }
+}

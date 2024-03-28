@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "395381892091",
+    "project_id": "annah-olmcb8",
+    "storage_bucket": "annah-olmcb8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:395381892091:android:961e28130e5753a030215e",
+        "android_client_info": {
+          "package_name": "com.mycompany.annah"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7fNup3dGJ1Slwkjv-q1MnsoO2mwfwCnI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
